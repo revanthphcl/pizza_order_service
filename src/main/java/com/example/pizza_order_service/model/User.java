@@ -17,14 +17,15 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	private @Id @GeneratedValue Long userId;
-	private String name, email, password;
+	private String name, email, password, address;
 	private Long phoneNo;
 	private String role;
 	
-	public User(long id, String name, String email, String password, long phoneNo) {
+	public User(long id, String name, String email, String address, String password, long phoneNo) {
 		this.userId = id;
 		this.name = name;
 		this.email = email;
+		this.address = address;
 		this.password = password;
 		this.phoneNo = phoneNo;	
 	}

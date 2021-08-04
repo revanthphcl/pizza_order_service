@@ -10,13 +10,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="TOPPING")
+@Table(name="ADDON")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Topping {
+public class Addon {
 
-	private @Id @GeneratedValue Long toppingId;
+	private @Id @GeneratedValue Long addonId;
 	private String name, description;
 	private double price;
 }

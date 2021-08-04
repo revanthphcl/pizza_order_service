@@ -22,15 +22,15 @@ import lombok.NoArgsConstructor;
 public class Transaction {
 
 	private @Id @GeneratedValue Long transactionId;
-	private String deliveryOrPickup;
-	private boolean onlinePayment;
+	private String deliveryOrPickup, deliveryAddress, refundReason;
+	private boolean onlinePayment, paymentRecieved, refunded;
 	private Date purchaseDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "paymentinfo_paymentInfoId", referencedColumnName = "paymentInfoId")
-	private long fk_paymentInfoId;
+	@JoinColumn(name = "fk_paymentInfoId")
+	private PaymentInfo fk_PaymentInfo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_userId", referencedColumnName = "userId")
-	private long fk_userId;
+	@JoinColumn(name = "fk_User")
+	private User fk_User;
 }
