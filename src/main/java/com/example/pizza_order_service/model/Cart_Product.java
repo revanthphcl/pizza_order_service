@@ -25,10 +25,10 @@ public class Cart_Product {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_Cart")
-	private Cart fk_Cart;
+	private Cart cart;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_Product")
-	private Product fk_Product;
+	private Product product;
 	
 }

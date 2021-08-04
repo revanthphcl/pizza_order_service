@@ -28,9 +28,9 @@ public class Transaction {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_paymentInfoId")
-	private PaymentInfo fk_PaymentInfo;
+	private PaymentInfo paymentInfo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_User")
-	private User fk_User;
+	private User user;
 }

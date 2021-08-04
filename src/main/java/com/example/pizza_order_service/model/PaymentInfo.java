@@ -28,6 +28,6 @@ public class PaymentInfo {
 	private Date expirationDate;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_userId", referencedColumnName = "userId")
-	private long fk_userId;
+	@JoinColumn(name = "fk_User")
+	private User user;
 }

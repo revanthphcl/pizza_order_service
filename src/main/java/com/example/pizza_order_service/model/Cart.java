@@ -22,6 +22,6 @@ public class Cart {
 	private @Id @GeneratedValue Long cartId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_userId", referencedColumnName = "userId")
-	private long fk_userId;
+	@JoinColumn(name = "fk_User")
+	private User user;
 }

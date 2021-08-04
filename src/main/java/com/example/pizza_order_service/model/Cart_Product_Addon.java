@@ -1,9 +1,9 @@
 package com.example.pizza_order_service.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,12 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cart_Product_Addon {
 
+	private @Id @GeneratedValue Long cartProductAddonId;
+	
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_CartProduct")
-	private Cart_Product fk_CartProduct;
+	private Cart_Product cartProduct;
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_Addon")
-	private Addon fk_Addon;
+	private Addon addon;
 }
