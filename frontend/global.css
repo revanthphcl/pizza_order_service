@@ -11,12 +11,13 @@
 .background::before {    
 	content: "";
 	background-image: url('background.png');
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
 	opacity: 0.25;
+	z-index: -999;
 }
 
 /*Navbar text coloring*/
