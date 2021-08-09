@@ -1,4 +1,4 @@
-package com.example.pizza_order_service.controller;
+package com.example.pizza_order_service.controllers;
 
 import java.util.List;
 
@@ -24,40 +24,40 @@ import com.example.pizza_order_service.repository.UserRepository;
 
 
 @RestController
-public class Controller {
+public class ProductController {
 
-	@Autowired
-    private AddonRepository AddonData;
-	
-	@Autowired
-    private CartRepository CartData;
-	
-	@Autowired
-    private Cart_ProductRepository Cart_ProductData;
-	
-	@Autowired
-    private Cart_Product_AddonRepository Cart_Product_AddonData;
-	
-	@Autowired
-    private PaymentInfoRepository PaymentInfoData;
+//	@Autowired
+//    private AddonRepository AddonData;
+//	
+//	@Autowired
+//    private CartRepository CartData;
+//	
+//	@Autowired
+//    private Cart_ProductRepository Cart_ProductData;
+//	
+//	@Autowired
+//    private Cart_Product_AddonRepository Cart_Product_AddonData;
+//	
+//	@Autowired
+//    private PaymentInfoRepository PaymentInfoData;
 	
 	@Autowired
     private ProductRepository ProductData;
 	
-	@Autowired
-    private TransactionRepository TransactionData;
+//	@Autowired
+//    private TransactionRepository TransactionData;
 	
 	@Autowired
     private UserRepository UserData;
 	
 	//Create Product
-   	@GetMapping("/create")
+   	@GetMapping("/Product")
 	public ModelAndView getPage() {
    		Product prod = new Product();
 		return new ModelAndView("createProduct", "fn", prod);       
 	}
 
-	@PostMapping("/create")
+	@PostMapping("/Product")
 	public ModelAndView createProduct(Product prod) {
 		Product newProd = ProductData.save(prod);
 		
@@ -66,21 +66,21 @@ public class Controller {
 	}
 	
 	//Read/Display product
-	@GetMapping("/read")
+	@GetMapping("/Product")
 	public ModelAndView listProduct() {
 		List<Product> products = (List<Product>) ProductData.findAll();
 		return new ModelAndView("read","product", products);
 	}
 	
 	//Update/Edit product
-	@GetMapping("/update")
+	@GetMapping("/Product")
 	public ModelAndView getupdate() {
 		Product prod = new Product();
 
 
 		return new ModelAndView("UpdateProducts", "fn3" , prod);
 	}
-	@PostMapping("/update")
+	@PostMapping("/Product")
 	public ModelAndView updateProd(Product product) {
 
 		ProductData.save(product);
