@@ -10,7 +10,7 @@ import com.example.pizza_order_service.model.Transaction;
 import com.example.pizza_order_service.model.User;
 
 @Service
-public class TransactionServicec {
+public class TransactionService {
 	
 	@Autowired
 	TransactionRepository tr;
