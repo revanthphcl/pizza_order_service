@@ -13,22 +13,22 @@ import com.example.pizza_order_service.repository.UserRepository;
 public class UserService {
 	
 	@Autowired
-	UserRepository ur;
+	UserRepository userRepo;
 	
-	public void createUser(User u) {
-		ur.save(u);
+	public void createUser(User user) {
+		userRepo.save(user);
 	}
 	
-	public void updateUser(User u) {
-		User foundUser = ur.findByuID(u.getUserId());
+	public void updateUser(User user) {
+		User foundUser = userRepo.findByuID(user.getUserId());
 		if (Objects.isNull(foundUser))
 		{
-			ur.save(u);
+			userRepo.save(user);
 		}
 	}
 	
-	public void deleteUser(User u) {
-		ur.delete(u);
+	public void deleteUser(User user) {
+		userRepo.delete(user);
 	}
 	
 	

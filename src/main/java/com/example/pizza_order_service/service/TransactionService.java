@@ -13,14 +13,14 @@ import com.example.pizza_order_service.model.User;
 public class TransactionService {
 	
 	@Autowired
-	TransactionRepository tr;
+	TransactionRepository transactionRepo;
 	
-	public void addTransaction(Transaction t) {
-		tr.save(t);
+	public void addTransaction(Transaction transaction) {
+		transactionRepo.save(transaction);
 	}
 	
-	public List<Transaction> listTransactionsByUser(User u){
-		return tr.findByUser(u);
+	public List<Transaction> listTransactionsByUser(User user){
+		return transactionRepo.findByUser(user);
 	}
 
 }
