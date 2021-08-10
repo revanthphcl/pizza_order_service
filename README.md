@@ -1,4 +1,4 @@
-# pizza_order_service
+# PizzaOrderService
 
 ## Description
  This is a practice project creating an online pizzeria website for customers and managers, using Spring, MySQL
