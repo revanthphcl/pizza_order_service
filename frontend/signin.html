@@ -84,11 +84,13 @@
 			<!-- End Navbar -->
 
 			<!-- Input Form -->
-			<form style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
-				<label>Username:</label><br>
-				<input type="text" id="username" name="username" style="border-radius: 100px;"><br>
-				<label>Password:</label><br>
-				<input type="password" id="pwd" name="pwd" style="border-radius: 100px;"><br><br>
+			<form autocomplete="on" method="post" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
+				<label>Username:<br>
+					<input type="text" id="username" name="username" required autofocus style="border-radius: 100px;">
+				</label><br>
+				<label>Password:<br>
+					<input type="password" id="pwd" name="pwd" required autocomplete="off" style="border-radius: 100px;">
+				</label><br><br>
 				<input type="submit" value="Sign In" style="border-radius: 100px; transform: translate(50%); color: var(--primary); background-color: var(--tertiary); width: 50%; font-size: 3.5vh; border-style: none;"><br><br>
 				<div style="text-align: center;">
 					<a href="createAccount.html" style="font-size: 2.5vh;">New User? Create an Account!</a>

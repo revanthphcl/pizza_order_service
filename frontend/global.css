@@ -30,6 +30,7 @@
 	background-color: var(--tertiary);
 	position: fixed;
 	width: 100%;
+	z-index: 999;
 }
 
 /*All of the following animated styles are for the hamburger menu only*/
