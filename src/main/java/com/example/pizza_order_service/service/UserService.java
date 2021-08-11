@@ -1,5 +1,7 @@
 package com.example.pizza_order_service.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,10 @@ public class UserService {
 
 	public void save(User user) {
 		userRepo.save(user);
+	}
+
+	public boolean userExists(User user) {
+		Optional<User> retrievedUser = userRepo.findById(user.getUserId());
+		return retrievedUser.isPresent();
 	}
 }

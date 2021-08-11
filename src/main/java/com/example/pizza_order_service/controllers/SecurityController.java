@@ -20,20 +20,23 @@ public class SecurityController {
 		User user = new User();
 		return new ModelAndView("login", "fn5", user);       
 	}
-
-	@PostMapping("/login")
-	public ModelAndView postLoginPage() {
-		return new ModelAndView("filler");
-	}
 	
 	@GetMapping("/registration")
 	public ModelAndView getCreateUser() {
-		return new ModelAndView("filler");
+		User user = new User();
+		return new ModelAndView("createUser", "fn6", user);
 	}
 	
 	@PostMapping("/registration")
 	public ModelAndView postCreateUser(User user) {
-		userService.save(user);
-		return new ModelAndView("filler");
+		boolean exists = userService.userExists(user);
+		if (exists) {
+			String message = "User name already exists!";
+			return new ModelAndView("errorPage", "fn7", message);
+		} else {
+			userService.save(user);
+			return getLoginPage();			
+		}
+
 	}
 }
