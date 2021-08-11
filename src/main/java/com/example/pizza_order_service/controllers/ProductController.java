@@ -3,6 +3,7 @@ package com.example.pizza_order_service.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,101 +22,53 @@ import com.example.pizza_order_service.repository.PaymentInfoRepository;
 import com.example.pizza_order_service.repository.ProductRepository;
 import com.example.pizza_order_service.repository.TransactionRepository;
 import com.example.pizza_order_service.repository.UserRepository;
+import com.example.pizza_order_service.service.ProductService;
 
 
-@RestController
+@Controller
 public class ProductController {
 
-//	@Autowired
-//    private AddonRepository AddonData;
-//	
-//	@Autowired
-//    private CartRepository CartData;
-//	
-//	@Autowired
-//    private Cart_ProductRepository Cart_ProductData;
-//	
-//	@Autowired
-//    private Cart_Product_AddonRepository Cart_Product_AddonData;
-//	
-//	@Autowired
-//    private PaymentInfoRepository PaymentInfoData;
-	
 	@Autowired
-    private ProductRepository ProductData;
+    private ProductService prodService;
+		
 	
-//	@Autowired
-//    private TransactionRepository TransactionData;
-	
-	@Autowired
-    private UserRepository UserData;
-	
-	//Create Product
-   	@GetMapping("/Product")
-	public ModelAndView getPage() {
+   	@GetMapping("/Product/create")
+	public ModelAndView getCreateProduct() {
    		Product prod = new Product();
 		return new ModelAndView("createProduct", "fn", prod);       
 	}
 
-	@PostMapping("/Product")
-	public ModelAndView createProduct(Product prod) {
-		Product newProd = ProductData.save(prod);
-		
+   	//refactor
+	@PostMapping("/Product/create")
+	public ModelAndView postCreateProduct(Product prod) {
+		Product newProd = prodService.save(prod);
 		return new ModelAndView("create", "fn2", newProd);
-
 	}
 	
-	//Read/Display product
-	@GetMapping("/Product")
-	public ModelAndView listProduct() {
-		List<Product> products = (List<Product>) ProductData.findAll();
+	@GetMapping("/Product/all")
+	public ModelAndView listProducts() {
+		List<Product> products = (List<Product>) prodService.findAll();
 		return new ModelAndView("read","product", products);
 	}
 	
-	//Update/Edit product
-	@GetMapping("/Product")
-	public ModelAndView getupdate() {
+	@GetMapping("/Product/update")
+	public ModelAndView getUpdateProduct() {
 		Product prod = new Product();
-
-
 		return new ModelAndView("UpdateProducts", "fn3" , prod);
 	}
-	@PostMapping("/Product")
-	public ModelAndView updateProd(Product product) {
-
-		ProductData.save(product);
-		
+	
+	//refactor
+	@PostMapping("/Product/update")
+	public ModelAndView postUpdateProduct(Product product) {
+		prodService.save(product);
 		return new ModelAndView("updateProducts2", "fn4", product);
 	}
 	
 	
-	//Delete a product by id
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public String deleteProduct(@PathVariable("id") long theId)  
-	{  
-
-		ProductData.deleteById(theId);
-		return "Product deleted successfully....(insert hyperlink to desired page)";
+	@GetMapping(value="/Product/{id}")
+	public ModelAndView deleteProduct(@PathVariable("id") long id)  {  
+		prodService.deleteProduct(id);
+		return new ModelAndView("/Product/all"); //This is probably incorrect, please test. 
 
 	} 
-	
-	@GetMapping("/login")
-	public ModelAndView getPage2() {
-		User usr = new User();
-		return new ModelAndView("login", "fn5", usr);       
-	}
-
-	@PostMapping("/login")
-	public String createUser(User u) {
-		
-		User aUser = UserData.getUserByPassword(u.getPassword());
-		aUser = UserData.getUserByName(u.getName());
-		
-		if(aUser != null) {
-			return "Login Successful. (insert hyperlink to desired page)";
-		}
-		else {
-		return "Login Unsuccessful. (insert hyperlink to desired page)";
-		} 
-	}
 }
