@@ -18,6 +18,11 @@ public class UserService {
 		userRepo.save(user);
 	}
 
+	public User findUserByUserName(String username) {
+		return userRepo.getUserByName(username);
+	}
+
+	
 	public boolean userExists(User user) {
 		Optional<User> retrievedUser = userRepo.findById(user.getUserId());
 		return retrievedUser.isPresent();
