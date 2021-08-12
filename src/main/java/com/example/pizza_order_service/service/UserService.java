@@ -19,6 +19,11 @@ public class UserService {
 		userRepo.save(user);
 	}
 	
+	public User getUser(Long UserId) {
+		User user = userRepo.findByuID(UserId);
+		return user;
+	}
+	
 	public void updateUser(User user) {
 		User foundUser = userRepo.findByuID(user.getUserId());
 		if (Objects.isNull(foundUser))
