@@ -3,6 +3,7 @@ package com.example.pizza_order_service.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,14 +18,40 @@ public class SecurityController {
 	@Autowired
 	UserService userService;
 	
-	@GetMapping({"/","/login"})
-	public String mainRedirect() {
-		return "login.html";
+	@GetMapping({"/","/landing"})
+	public String landing() {
+		return "landing.html";
+	}
+	
+	@GetMapping("/login")
+	public String login(@RequestParam(required=false) String username, @RequestParam(required=false) String pass) {
+		if(username!=null && pass!=null) {					//JS should handle nulls and whitespace
+			User temp = userService.findUserByUserName(username);
+			if(temp!=null && pass.equals(temp.getPassword())) {
+				System.out.println("logged in!");
+				return "landing.html";
+			}
+			else {
+				System.out.println("user not found/invalid pass");
+				return "login.html";
+			}
+		}
+		else
+			return "login.html";
 	}
 	
 	@GetMapping("/createAccount")
-	public String create() {
-		return "createAccount.html";
+	public String create(@RequestParam(required=false) String username, @RequestParam(required=false) String pass1, @RequestParam(required=false) String pass2) {
+		if(username!=null && pass1!=null && pass2!=null) {					//JS should handle nulls and whitespace
+			User user = new User();
+			user.setName(username);
+			user.setPassword(pass1);
+			userService.save(user);
+			System.out.println("acct created. Redirecting...");
+			return "login.html";
+		}
+		else
+			return "createAccount.html";		
 	}
 	
 //	@GetMapping("/login")
