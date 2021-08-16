@@ -13,6 +13,9 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+			<!-- Custom stylesheet (GOES LAST) -->
+<!-- 			<link href="global.css" rel="stylesheet"> -->
+
 			<!-- responsive viewport meta tag -->
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -27,6 +30,19 @@
 					--white: #FFFFFF;
 				}
 
+				/*Background Image Opacity*/
+/*				.background::before {    
+					content: "";
+					background-image: url('background.png');
+					position: fixed;
+					top: 0px;
+					right: 0px;
+					bottom: 0px;
+					left: 0px;
+					opacity: 0.25;
+					z-index: -999;
+				}*/
+
 				/*Navbar text coloring*/
 				#content a {
 					color: var(--primary);
@@ -38,14 +54,6 @@
 					position: fixed;
 					width: 100%;
 					z-index: 999;
-				}
-
-				/*Primary Buttons*/
-				.button {
-					border-radius: 100px;
-					color: var(--primary);
-					background-color: var(--tertiary);
-					border-style: none;
 				}
 
 				/*All of the following animated styles are for the hamburger menu only*/
@@ -121,10 +129,13 @@
 			</style>
 			<!-- End CSS -->
 		</head>
-		<body>
+		<body class="background">
 			<!-- Navbar -->
 			<nav class="navbar">
 				<!-- Navbar brand -->
+<!-- 				<a href="#">
+				<img src="logoNarrow.png" alt="Logo" href="#" style="position: relative; left: 46vw; height: 4vh; top: 0px;">
+				</a> -->
 				<h3 style="color: var(--primary); top: 0px; left: 0px; right: 0px; width: 100%; text-align: center;">
 					<a href="#">Mario's Pizzeria</a>
 				</h3>
@@ -179,24 +190,6 @@
 				<!-- End Collapsible content -->
 			</nav>
 			<!-- End Navbar -->
-
-			<!-- Input Form -->
-			<form autocomplete="on" method="post" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
-				<label>Username:<br>
-					<input type="text" name="username" required autofocus style="border-radius: 100px; border-color: black;">
-				</label><br>
-				<label>Password:<br>
-					<input type="password" name="pass1" required style="border-radius: 100px; border-color: black;">
-				</label><br>
-				<label>Confirm Password:<br>
-					<input type="password" name="pass2" required style="border-radius: 100px; border-color: black;">
-				</label><br><br>
-				<input type="submit" value="Create Account" class="button" style="width: 100%; font-size: 3.5vh;"><br><br>
-				<div style="text-align: center;">
-					<a href="login" style="font-size: 2.5vh;">Already a User? Login Here</a>
-				</div>
-			</form>
-			<!-- End Input Form -->
 		</body>
 
 		<!-- JS -->
