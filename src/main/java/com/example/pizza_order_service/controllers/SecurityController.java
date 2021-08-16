@@ -22,6 +22,11 @@ public class SecurityController {
 		return "login.html";
 	}
 	
+	@GetMapping("/createAccount")
+	public String create() {
+		return "createAccount.html";
+	}
+	
 //	@GetMapping("/login")
 //	public ModelAndView getLoginPage() {
 //		User user = new User();
