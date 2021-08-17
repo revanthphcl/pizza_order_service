@@ -24,8 +24,15 @@ public class SecurityController {
 	}
 	
 	@GetMapping("/login")
-	public String login(@RequestParam(required=false) String username, @RequestParam(required=false) String pass) {
-		if(username!=null && pass!=null) {					//JS should handle nulls and whitespace
+	public String load(Model model) {
+		model.addAttribute("id", "nope");
+		return "login.html";
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestParam(required=false) String username, @RequestParam(required=false) String pass, Model model) {
+		model.addAttribute("id", "nopeiddynope");
+		if(username!=null && pass!=null) {									//JS should handle nulls and whitespace...
 			User temp = userService.findUserByUserName(username);
 			if(temp!=null && pass.equals(temp.getPassword())) {
 				System.out.println("logged in!");
@@ -36,13 +43,15 @@ public class SecurityController {
 				return "login.html";
 			}
 		}
-		else
-			return "login.html";
+		return "login.html";
 	}
 	
 	@GetMapping("/createAccount")
 	public String create(@RequestParam(required=false) String username, @RequestParam(required=false) String pass1, @RequestParam(required=false) String pass2) {
-		if(username!=null && pass1!=null && pass2!=null) {					//JS should handle nulls and whitespace
+		if(pass1!=pass2) {
+			
+		}
+		if(username!=null && pass1!=null && pass2!=null) {					//JS should handle nulls and whitespace...
 			User user = new User();
 			user.setName(username);
 			user.setPassword(pass1);

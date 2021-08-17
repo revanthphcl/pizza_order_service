@@ -48,14 +48,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.formLogin()
 			.loginPage("/login").permitAll()
 			.failureUrl("/login?error=true")
-			.defaultSuccessUrl("/landingpage") //insert landing page url here
+			.defaultSuccessUrl("/landing") //insert landing page url here
 			.usernameParameter("username")
 			.passwordParameter("password")
 		.and()
 		.logout()
 			.logoutUrl("/logout")
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-		.logoutSuccessUrl("/logout"); //insert url for where users go after logging out.
+		.logoutSuccessUrl("/landing"); //insert url for where users go after logging out.
 		
 	}
 }
