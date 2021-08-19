@@ -33,6 +33,11 @@ public class CustomUserDetailsServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		closeable = MockitoAnnotations.openMocks(this);
+		
+		userMock = new User();
+		userMock.setName("John");
+		userMock.setPassword("Doe");
+		userMock.setRole("User");
 	}
 	
 	@After
@@ -42,11 +47,6 @@ public class CustomUserDetailsServiceTest {
 	
 	@Test
 	public void testLoadUserByUserNameExpectsUser() {
-		userMock = new User();
-		userMock.setName("Mock");
-		userMock.setPassword("Mock");
-		userMock.setRole("Mock1");
-		
 		when( userServiceMock.findUserByUserName(ArgumentMatchers.anyString())).thenReturn( userMock );
 		
 		UserDetails result = service.loadUserByUsername("test");
