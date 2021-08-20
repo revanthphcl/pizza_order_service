@@ -24,13 +24,13 @@ public class ProductController {
     private ProductService prodService;
 		
 	
-   	@GetMapping("")
+   	@GetMapping("/")
 	public ModelAndView getProduct() {
    		Product prod = new Product();
 		return new ModelAndView("createProduct", "fn", prod);       
 	}
 
-	@PostMapping("")
+	@PostMapping("/")
 	public ModelAndView postProduct(Product prod) {
 		Product newProd = this.save(prod);
 		return new ModelAndView("create", "fn2", newProd);
@@ -48,7 +48,7 @@ public class ProductController {
 		return new ModelAndView("UpdateProducts", "fn3" , prod);
 	}
 	
-	@PutMapping(value="{id}")
+	@PutMapping(value="/{id}")
 	public ModelAndView saveUpdatedProduct(Product product) {
 		Product updatedProd = this.save(product);
 		return new ModelAndView("updateProducts2", "fn4", updatedProd);
