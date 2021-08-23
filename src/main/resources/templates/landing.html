@@ -1,11 +1,47 @@
 <!-- HTML -->
 <html id="content">
-	<head th:replace="fragment.html :: header"></head>
+	<head>
+		<div th:replace="fragment.html :: header"></div>
+		<!-- CSS -->
+		<style>
+			.cropped {
+				width: 100%;
+				height: 32.75vh;
+				background-position: center center;
+				background-repeat: no-repeat;
+			}
+			.center {
+				margin: 0;
+				position: absolute;
+/*				top: 50%;
+				left: 50%;*/
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+			}
+		</style>
+		<!-- End CSS -->
+	</head>
 	<body class="background">
 		<!-- Navbar -->
 		<div th:replace="fragment.html :: navbar"></div>
 
-		<br><br><br><p style="text-align: center;" th:text="${message}"></p>
+		<!-- Landing page options -->
+		<a href="#">
+			<div class="cropped" style="top: 0px; background-image: url('https://bit.ly/3B7m3ec');">
+				<button type="button" class="button center" style="width: 7em; font-size: 3.5vh; text-align: center;">Order</button>
+			</div>
+		</a>
+		<a href="#">
+			<div class="cropped" style="top: 0px; background-image: url('https://bit.ly/3B7m3ec');">
+				<button type="button" class="button center" style="width: 7em; font-size: 3.5vh; text-align: center;">Menu</button>
+			</div>
+		</a>
+		<a href="#">
+			<div class="cropped" style="top: 0px; background-image: url('https://bit.ly/3B7m3ec');">
+				<button type="button" class="button center" style="width: 7em; font-size: 3.5vh; text-align: center;">Contact Us</button>
+			</div>
+		</a>
+		<!-- End Landing page options -->
 	</body>
 
 	<!-- JS -->
