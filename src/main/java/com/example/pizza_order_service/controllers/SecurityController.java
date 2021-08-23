@@ -22,8 +22,15 @@ public class SecurityController {
 	}
 	
 	@GetMapping("/login")
+	public String loginRedirect() {
+		return "login.html";
+	}
+	
+	@PostMapping("/login")
 	public ModelAndView login(@RequestParam(required=false) String username, @RequestParam(required=false) String pass) {
+		System.out.println("here");
 		if(username!=null && pass!=null) {														//only run the following if all fields are filled. Note that HTML handles incomplete field errors
+			System.out.println("there");
 			User temp = userService.findUserByUserName(username);								//search for entered username
 			
 			if(temp==null)																		//check for invalid username
@@ -38,6 +45,11 @@ public class SecurityController {
 	}
 	
 	@GetMapping("/createAccount")
+	public String createAccountRedirect() {
+		return "createAccount.html";
+	}
+	
+	@PostMapping("/createAccount")
 	public ModelAndView create(@RequestParam(required=false) String username, @RequestParam(required=false) String pass1, @RequestParam(required=false) String pass2) {
 		if(username!=null && pass1!=null && pass2!=null) {										//only run the following if all fields are filled. Note that HTML handles incomplete field errors
 			if(!pass1.equals(pass2))															//check for password mismatch
@@ -50,6 +62,7 @@ public class SecurityController {
 			User user = new User();																//this is only run once above conditions are met
 			user.setName(username);
 			user.setPassword(pass1);
+			user.setRole("USER");
 			userService.save(user);
 			return new ModelAndView("login.html", "message", "Account successfully created!");	//redirect user to login
 		}
