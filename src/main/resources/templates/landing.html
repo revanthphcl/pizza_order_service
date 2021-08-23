@@ -1,0 +1,15 @@
+<!-- HTML -->
+<html id="content">
+	<head th:replace="fragment.html :: header"></head>
+	<body class="background">
+		<!-- Navbar -->
+		<div th:replace="fragment.html :: navbar"></div>
+
+		<br><br><br><p style="text-align: center;" th:text="${message}"></p>
+	</body>
+
+	<!-- JS -->
+	<script th:insert="fragment.html :: script">
+	</script>
+	<!-- End JS -->
+</html>
