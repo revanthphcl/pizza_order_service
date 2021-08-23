@@ -181,7 +181,8 @@
 			<!-- End Navbar -->
 
 			<!-- Input Form -->
-			<form autocomplete="on" method="post" action="/login" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
+			<form autocomplete="on" method="get" action="/login" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
+				<p style="position: absolute; text-align: center;" th:text="${message}"></p><br>
 				<label>Username:<br>
 					<input type="text" name="username" required autofocus style="border-radius: 100px; border-color: black;">
 				</label><br>
@@ -191,8 +192,8 @@
 				<input type="submit" value="Sign In" class="button" style="transform: translate(50%); width: 50%; font-size: 3.5vh;"><br><br>
 				<div style="text-align: center;">
 					<a href="createAccount" style="font-size: 2.5vh;">New User? Create an Account!</a>
-				</div>
-				<p th:text="'failure: ' + ${greeting.id}" />
+				</div><br>
+				<p style="position: absolute; text-align: center;" th:text="${error}"></p>
 			</form>
 			<!-- End Input Form -->
 		</body>
