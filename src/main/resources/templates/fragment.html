@@ -28,6 +28,24 @@
 				--white: #FFFFFF;
 			}
 
+			/*For centering elements on x axis*/
+			.x-center {
+				left: 50vw;
+				transform: translate(-50%);
+			}
+
+			/*For centering elements on x and y axes*/
+			.xy-center {
+				left: 50vw;
+				top: 50vh;
+				transform: translate(-50%,-50%);
+			}
+
+			/*Focused item stylization*/
+			*:focus {
+				outline-color: var(--primary);
+			}
+
 			/*Background Image Opacity*/
 			.background::before {
 				content: "";
@@ -60,6 +78,12 @@
 				color: var(--primary);
 				background-color: var(--tertiary);
 				border-style: none;
+			}
+
+			/*Input Stylization*/
+			.input {
+				border-radius: 25px;
+				border-color: black;
 			}
 
 			/*All of the following animated styles are for the hamburger menu only*/

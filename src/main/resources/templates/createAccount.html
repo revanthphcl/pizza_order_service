@@ -6,15 +6,15 @@
 		<div th:replace="fragment.html :: navbar"></div>
 
 		<!-- Input Form -->
-		<form autocomplete="on" method="post" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--primary); font-size: 3.5vh;">
+		<form autocomplete="on" method="post" class="xy-center" style="position: fixed; color: var(--primary); font-size: 3.5vh;">
 			<label>Username:<br>
-				<input type="text" name="username" required autofocus style="border-radius: 100px; border-color: black;">
+				<input type="text" name="username" required autofocus class="input">
 			</label><br>
 			<label>Password:<br>
-				<input type="password" name="pass1" required style="border-radius: 100px; border-color: black;">
+				<input type="password" name="pass1" required class="input">
 			</label><br>
 			<label>Confirm Password:<br>
-				<input type="password" name="pass2" required style="border-radius: 100px; border-color: black;">
+				<input type="password" name="pass2" required class="input">
 			</label><br><br>
 			<input type="submit" value="Create Account" class="button" style="width: 100%; font-size: 3.5vh;"><br><br>
 			<div style="text-align: center;">

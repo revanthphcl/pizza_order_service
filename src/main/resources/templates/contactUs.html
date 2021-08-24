@@ -4,6 +4,9 @@
 		<div th:replace="fragment.html :: header"></div>
 		<!-- CSS -->
 		<style>
+			form * {
+				width: 100%;
+			}
 		</style>
 		<!-- End CSS -->
 	</head>
@@ -11,8 +14,27 @@
 		<!-- Navbar -->
 		<div th:replace="fragment.html :: navbar"></div>
 
-		<!-- Landing page options -->
-		<!-- End Landing page options -->
+		<!-- Input Form -->
+		<form autocomplete="on" method="post" action="/login" class="x-center" style="position: absolute; top: 10vh; color: var(--primary); font-size: 3.5vh;">
+			<p style="position: absolute; text-align: center;" th:text="${message}"></p><br><br>
+			<label>Name<br>
+				<input type="text" name="username" required autofocus class="input">
+			</label><br>
+			<label>Email<br>
+				<input type="password" name="pass" required class="input">
+			</label><br>
+			<label>Message<br>
+				<textarea type="password" name="pass" required rows="4" class="input"></textarea>
+			</label><br><br>
+			<input type="submit" value="Submit" class="button" style="transform: translate(50%); width: 50%; font-size: 3.5vh;"><br><br>
+			<p style="position: absolute; text-align: center;" th:text="${error}"></p>
+		</form>
+		<!-- End Input Form -->
+
+		<!-- Visit Us -->
+		<div>
+		</div>
+		<!-- End Visit Us -->
 	</body>
 
 	<!-- JS -->
