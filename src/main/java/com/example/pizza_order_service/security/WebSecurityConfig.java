@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		.csrf().disable()
 		.authorizeRequests()
-		.antMatchers("/", "/css", "/js", "/registration", "/product", "/login", "/createAccount", "/landing").permitAll() //put public links here
+		.antMatchers("/", "/login", "/createAccount", "/landing", "/order", "/menu", "/contactUs").permitAll() //put public links here
 		.antMatchers("/manager/*").hasRole("MANAGER") //Put restricted links here
 		.anyRequest()
 		.authenticated()
