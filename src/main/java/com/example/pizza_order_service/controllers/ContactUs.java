@@ -20,4 +20,12 @@ public class ContactUs {
 	public String contactUsRedirect() {
 		return "contactUs.html";
 	}
+
+	@PostMapping("/contactUs")
+	public ModelAndView feedbackForm(@RequestParam(required=false) String name, @RequestParam(required=false) String email, @RequestParam(required=false) String message) {
+		if(name==null || email==null || message==null) {
+			return new ModelAndView("contactUs.html", "message", "Please try again");
+		}
+		return new ModelAndView("contactUs.html", "message", "Thank you for the feedback!");
+	}
 }
