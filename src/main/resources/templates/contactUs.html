@@ -73,8 +73,13 @@
 	</body>
 
 	<!-- JS -->
-	<div th:replace="fragment.html :: script"></div>
 	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
 	</script>
 	<!-- End JS -->
 </html>
