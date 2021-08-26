@@ -7,17 +7,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.pizza_order_service.model.User;
-import com.example.pizza_order_service.service.UserService;
+import com.example.pizza_order_service.model.Product;
+import com.example.pizza_order_service.service.ProductService;
 
 @Controller
 public class Order {
 
 	@Autowired
-	UserService userService;
+	ProductService productService;
 	
 	@GetMapping("/order")
 	public String contactUsRedirect() {
+		System.out.println(productService.findAll());
 		return "order.html";
 	}
 }

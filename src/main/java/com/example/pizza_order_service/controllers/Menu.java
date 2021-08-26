@@ -12,9 +12,6 @@ import com.example.pizza_order_service.service.UserService;
 
 @Controller
 public class Menu {
-
-	@Autowired
-	UserService userService;
 	
 	@GetMapping("/menu")
 	public String contactUsRedirect() {
