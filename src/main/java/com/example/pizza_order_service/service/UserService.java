@@ -1,5 +1,6 @@
 package com.example.pizza_order_service.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,5 +27,13 @@ public class UserService {
 	public boolean userExists(User user) {
 		Optional<User> retrievedUser = userRepo.findById(user.getUserId());
 		return retrievedUser.isPresent();
+	}
+
+	public List<User> findAll() {
+		return (List<User>) userRepo.findAll();
+	}
+
+	public void delete(String name) {
+		userRepo.delete(this.findUserByUserName(name));
 	}
 }
