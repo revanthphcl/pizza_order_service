@@ -1,4 +1,4 @@
-package com.example.pizza_order_service.controllers;
+package com.example.pizza_order_service.controllers.rest;
 
 import java.util.List;
 
@@ -7,37 +7,36 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.pizza_order_service.model.Product;
-import com.example.pizza_order_service.service.ProductService;
+import com.example.pizza_order_service.model.Addon;
+import com.example.pizza_order_service.service.AddonService;
 
 @RestController
-@RequestMapping("/REST/Product/")
-public class ProductRestController {
+@RequestMapping("/REST/Addon/")
+public class AddonRestController {
 
 	@Autowired
-    private ProductService prodService;
+	private AddonService addonService;
 	
 	@GetMapping(value = "{id}", produces = "application/json")
-	public Product getProduct(@PathVariable long id) {
-		return prodService.find(id);
+	public Addon getAddon(@PathVariable long id) {
+		return addonService.find(id);
 	}
 	
 	@PostMapping(value = "")
-	public void saveProduct(Product prod) {
-		prodService.save(prod);
+	public void saveAddon(Addon addon) {
+		addonService.save(addon);
 	}
 	
 	@GetMapping(value = "", produces = "application/json")
-	public List<Product> getProducts(){
-		return prodService.findAll();
+	public List<Addon> getAddons(){
+		return addonService.findAll();
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public void deleteProduct(@PathVariable long id) {
-		prodService.deleteProduct(id);
+	public void deleteAddon(@PathVariable long id) {
+		addonService.delete(id);
 	}
 }
