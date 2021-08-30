@@ -13,6 +13,22 @@
 
 		<!-- Landing page options -->
 		<!-- End Landing page options -->
+		<p style="position: absolute; text-align: center;" th:text="${menu}"></p>
+		<h1>Our Menu: </h1>
+	<ul>
+		<c:forEach items="${menu}" var="products">
+			<b>Id:</b>
+			<li>${products.productId}</li>
+			<b>Name:</b>
+			<li>${products.name}</li>
+			<b>Description:</b>
+			<li>${products.description}</li>
+			<b>Price:</b>
+			<li>${products.price}</li>
+
+		</c:forEach>
+	</ul>
+		
 	</body>
 
 	<!-- JS -->
