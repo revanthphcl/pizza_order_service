@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -68,23 +67,13 @@ public class AdminController {
 	
 	// - Promote Users
 	
-	@PutMapping("/employees/{id}")
-	User promoteUser(@RequestBody User newUser, @PathVariable String username) {
-	    
-	    return userService.findUserByUserName(username)
-	      .map(employee -> {
-	        employee.setName(newEmployee.getName());
-	        employee.setRole(newEmployee.getRole());
-	        return repository.save(employee);
-	      })
-	      .orElseGet(() -> {
-	        newEmployee.setId(id);
-	        return repository.save(newEmployee);
-	      });
-	    
+	@PutMapping("/users/{id}")
+	public String promoteUser(User newUser){
+		  User user = userService.findUserByUserName(newUser.getName());
+		  user.setRole(newUser.getRole());
+		  return "Promotion confirmed";
+		}
 	
-	  }
-
 	
 	//- Delete Product
 	
