@@ -1,0 +1,36 @@
+<!-- HTML -->
+<html id="content">
+	<head th:replace="fragment.html :: header"></head>
+	<body class="background">
+		<!-- Navbar -->
+		<div th:replace="fragment.html :: navbar"></div>
+
+		<!-- Input Form -->
+		<form autocomplete="on" method="post" action="/login" class="xy-center" style="position: fixed; color: var(--primary); font-size: 3.5vh;">
+			<p style="position: absolute; text-align: center;" th:text="${message}"></p><br><br>
+			<label>Username:<br>
+				<input type="text" name="username" required autofocus class="input">
+			</label><br>
+			<label>Password:<br>
+				<input type="password" name="pass" required class="input">
+			</label><br><br>
+			<input type="submit" value="Sign In" class="button" style="transform: translate(50%); width: 50%; font-size: 3.5vh;"><br><br>
+			<div style="text-align: center;">
+				<a href="createAccount" style="font-size: 2.5vh;">New User? Create an Account!</a>
+			</div><br>
+			<p style="position: absolute; text-align: center;" th:text="${error}"></p>
+		</form>
+		<!-- End Input Form -->
+	</body>
+
+	<!-- JS -->
+	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
+	</script>
+	<!-- End JS -->
+</html>
