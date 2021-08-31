@@ -4,6 +4,9 @@
 		<div th:replace="fragment.html :: header"></div>
 		<!-- CSS -->
 		<style>
+			td {
+				padding: 10px;
+			}
 		</style>
 		<!-- End CSS -->
 	</head>
@@ -11,24 +14,11 @@
 		<!-- Navbar -->
 		<div th:replace="fragment.html :: navbar"></div>
 
-		<!-- Landing page options -->
-		<!-- End Landing page options -->
-		<p style="position: absolute; text-align: center;" th:text="${menu}"></p>
-		<h1>Our Menu: </h1>
-	<ul>
-		<c:forEach items="${menu}" var="products">
-			<b>Id:</b>
-			<li>${products.productId}</li>
-			<b>Name:</b>
-			<li>${products.name}</li>
-			<b>Description:</b>
-			<li>${products.description}</li>
-			<b>Price:</b>
-			<li>${products.price}</li>
-
-		</c:forEach>
-	</ul>
-		
+		<!-- Menu -->
+		<table class="xy-center" style="position: fixed; background-color: var(--tertiary); color: var(--primary); font-size: 3.5vh; border-radius: 15px; padding: 5px;">
+			<b th:utext="${menu}"></b>
+		</table>
+		<!-- End Menu -->
 	</body>
 
 	<!-- JS -->
