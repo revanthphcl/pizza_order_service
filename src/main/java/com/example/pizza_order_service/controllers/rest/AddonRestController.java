@@ -37,6 +37,6 @@ public class AddonRestController {
 	
 	@DeleteMapping(value = "/{id}")
 	public void deleteAddon(@PathVariable long id) {
-		addonService.delete(id);
+		addonService.deleteAddon(id);
 	}
 }
