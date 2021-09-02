@@ -4,6 +4,9 @@
 		<div th:replace="fragment.html :: header"></div>
 		<!-- CSS -->
 		<style>
+			td {
+				padding: 10px;
+			}
 		</style>
 		<!-- End CSS -->
 	</head>
@@ -11,12 +14,21 @@
 		<!-- Navbar -->
 		<div th:replace="fragment.html :: navbar"></div>
 
-		<!-- Landing page options -->
-		<!-- End Landing page options -->
+		<!-- Menu -->
+		<table class="xy-center" style="position: fixed; background-color: var(--tertiary); color: var(--primary); font-size: 3.5vh; border-radius: 15px; padding: 5px;">
+			<b th:utext="${menu}"></b>
+		</table>
+		<!-- End Menu -->
 	</body>
 
 	<!-- JS -->
-	<script th:insert="fragment.html :: script">
+	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
 	</script>
 	<!-- End JS -->
 </html>

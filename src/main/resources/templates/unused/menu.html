@@ -1,0 +1,31 @@
+<!-- HTML -->
+<html id="content">
+	<head>
+		<div th:replace="fragment.html :: header"></div>
+		<!-- CSS -->
+		<style>
+		</style>
+		<!-- End CSS -->
+	</head>
+	<body class="background" style="overflow: hidden;">
+		<!-- Navbar -->
+		<div th:replace="fragment.html :: navbar"></div>
+
+		<!-- Landing page options -->
+		
+		
+		
+		<!-- End Landing page options -->
+	</body>
+
+	<!-- JS -->
+	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
+	</script>
+	<!-- End JS -->
+</html>
