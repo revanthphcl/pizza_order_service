@@ -10,6 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -74,6 +75,7 @@ public class SecurityControllerTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testLoginExpectsLandingPage() throws Exception {
 		when(userService.findUserByUserName("John Doe")).thenReturn(user);
 		
