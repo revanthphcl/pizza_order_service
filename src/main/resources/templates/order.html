@@ -1,9 +1,28 @@
+<!-- The following modal box is complimentary of W3 Schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal -->
+
 <!-- HTML -->
 <html id="content">
 	<head>
 		<div th:replace="fragment.html :: header"></div>
 		<!-- CSS -->
 		<style>
+			/* The Modal (background) */
+			.modal {
+				position: fixed; /* Stay in place */
+				display: block;
+				z-index: 1; /* Sit on top */
+				width: 100vw; /* Full width */
+				height: 100vh; /* Full height */
+				overflow: none; /* Disable scroll */
+				background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			}
+
+			/* Modal Content */
+			.modal-content {
+				padding: 50px;
+				width: 300px;
+				text-align: center;
+			}
 		</style>
 		<!-- End CSS -->
 	</head>
@@ -11,12 +30,39 @@
 		<!-- Navbar -->
 		<div th:replace="fragment.html :: navbar"></div>
 
-		<!-- Landing page options -->
-		<!-- End Landing page options -->
+		<!-- Modal content -->
+		<div class="modal">
+			<div class="modal-content xy-center">
+				<p>Before we get started...</p>
+				<button type="button" class="button close">Delivery</button><br>
+				<p>-or-</p>
+				<button type="button" class="button close">Pickup</button>
+			</div>
+		</div>
+		<!-- End modal content -->
 	</body>
 
 	<!-- JS -->
-	<script th:insert="fragment.html :: script">
+	<script>
+		// Get the modal
+		var modal = document.getElementsByClassName("modal")[0];
+
+		// Get the closing buttons
+		var btns = document.getElementsByClassName("close");
+
+		// For closing the display with >1 closing buttons
+		for (var i = 0; i < btns.length; i++) {
+			btns[i].onclick = function() {
+				modal.style.display = "none";
+			}
+		}
+
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
 	</script>
 	<!-- End JS -->
 </html>
