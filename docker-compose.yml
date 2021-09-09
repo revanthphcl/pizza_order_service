@@ -1,10 +1,24 @@
+version: '3'
+
 services:
   docker-mysql:
-    image: mysql:5.7
+    image: mysql/mysql-server:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=database
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=My5qlboog420!
+      - MYSQL_DATABASE=pizzeria
+      - MYSQL_USER=pizzauser
+      - MYSQL_PASSWORD=secretPass
     ports:
       - 3306:3306
+
+  app:
+    image: marios-pizzeria:latest
+    build:
+        context: ./
+        dockerfile: Dockerfile
+    ports:
+       - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/pizzeria
+    depends_on:
+       - docker-mysql
