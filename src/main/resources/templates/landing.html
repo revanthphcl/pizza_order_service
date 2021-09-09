@@ -1,0 +1,67 @@
+<!-- HTML -->
+<html id="content">
+	<head>
+		<div th:replace="fragment.html :: header"></div>
+		<!-- CSS -->
+		<style>
+			/*Image Cropping and Centering*/
+			.cropped {
+				height: 32.75vh;
+				background-position: center center;
+				background-repeat: repeat;
+				position: relative;
+				transform: scale(1.05);
+			}
+			.cropped:hover {
+				transform: scale(1.1);
+				transition: transform .5s;
+				box-shadow: 0 0 25vw 5px black inset;
+				z-index: 99;	/*Note that navbar z-index is 999; this brings image above others but not above navbar*/
+			}
+
+			/*Button Centering*/
+			.special-button {
+				margin: 0;
+				position: absolute;
+				transform: translate(-50%, 14vh);
+				width: 7em;
+				font-size: 5vh;
+				text-align: center;
+			}
+		</style>
+		<!-- End CSS -->
+	</head>
+	<body class="background" style="overflow: hidden;">
+		<!-- Navbar -->
+		<div th:replace="fragment.html :: navbar"></div>
+
+		<!-- Landing page options -->
+		<a href="order">
+			<div class="cropped" style="background-image: url('https://bit.ly/3DbvKdk');">
+				<button type="button" class="button x-center special-button">Order</button>
+			</div>
+		</a>
+		<a href="menu">
+			<div class="cropped" style="background-image: url('https://bit.ly/3DexLWk');">
+				<button type="button" class="button x-center special-button">Menu</button>
+			</div>
+		</a>
+		<a href="contactUs">
+			<div class="cropped" style="background-image: url('https://bit.ly/3zheLUu');">
+				<button type="button" class="button x-center special-button">Contact Us</button>
+			</div>
+		</a>
+		<!-- End Landing page options -->
+	</body>
+
+	<!-- JS -->
+	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
+	</script>
+	<!-- End JS -->
+</html>

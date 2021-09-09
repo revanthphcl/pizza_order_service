@@ -1,0 +1,85 @@
+<!-- HTML -->
+<html id="content">
+	<head>
+		<div th:replace="fragment.html :: header"></div>
+		<!-- CSS -->
+		<style>
+			/*For items inside div to take up max width*/
+			form * {
+				width: 100%;
+			}
+
+			/*For all consistency across all child elements*/
+			.special * {
+				font-size: 3.5vh;
+			}
+
+			/*For table consistency*/
+			table * {
+				vertical-align:top;
+				padding-left: 5px;
+				padding-right: 5px;
+			}
+		</style>
+		<!-- End CSS -->
+	</head>
+	<body class="background" style="overflow: hidden;">
+		<!-- Navbar -->
+		<div th:replace="fragment.html :: navbar"></div>
+
+		<!-- Table for content consistency -->
+		<table class="special x-center" style="top: 100px; position: relative;">
+			<tr>
+				<!-- Left side -->
+				<td>
+					<!-- Visit Us -->
+					<b>Location</b>
+					<p>925 K Street<br>Sacramento, CA 95814</p>
+					<b>Hours</b>
+					<p>Monday–Saturday<br>11am-9pm</p>
+					<b>Contact</b>
+					<p>(916) 758-6897<br>holyslice916@gmail.com</p>
+					<!-- End Visit Us -->
+				</td>
+				<!-- End left side -->
+
+				<!-- Right side -->
+				<td>
+					<b>Contact Us</b><br>
+					<!-- Input Form -->
+					<form autocomplete="on" method="post" action="/contactUs">
+						<label>Name<br>
+							<input type="text" name="name" required autofocus class="input">
+						</label><br>
+						<label>Email<br>
+							<input type="text" name="email" required class="input">
+						</label><br>
+						<label>Message<br>
+							<textarea type="text" name="message" required rows="4" class="input"></textarea>
+						</label><br><br>
+						<input type="submit" value="Submit" class="button" style="width: 5em; display: block; margin: auto;"><br><br>
+					</form>
+					<!-- End Input Form -->
+				</td>
+				<!-- End right side -->
+			</tr>
+			<!-- Response row -->
+			<tr>
+				<td colspan="2" style="text-align: center;" th:text="${message}"></td>
+			</tr>
+			<!-- End response row -->
+		</table>
+		<!-- End table content -->
+	</body>
+
+	<!-- JS -->
+	<script>
+		// To open the navbar buttons
+		$(document).ready(function() {
+			$('.first-button').on('click', function () {
+				$('.animated-icon1').toggleClass('open');
+			});
+		});
+	</script>
+	<!-- End JS -->
+</html>
