@@ -2,6 +2,7 @@ package com.example.pizza_order_service.controller;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -59,8 +60,7 @@ public class AddonRestControllerTest {
 	
 	@Test
 	public void testGetAddonExpectsJSON() throws Exception {
-		ResultActions result = mockMvc.perform(get("/REST/Addon/")
-					.queryParam("id", "1")
+		ResultActions result = mockMvc.perform(get("/REST/Addon/{id}", 1L)
 					.contentType(MediaType.APPLICATION_JSON));
 		result
 			.andExpect(status().isOk())
@@ -69,7 +69,7 @@ public class AddonRestControllerTest {
 	}
 	
 	@Test
-	public void testGetProductsExpectsJSON() throws Exception {
+	public void testGetAddonsExpectsJSON() throws Exception {
 		ResultActions result = mockMvc.perform(get("/REST/Addon/"));
 		result
 			.andExpect(status().isOk())
@@ -78,8 +78,8 @@ public class AddonRestControllerTest {
 	}
 	
 	@Test
-	public void testsaveAddonExpectsOk() throws Exception {
-		ResultActions result = mockMvc.perform(post("/REST/Addon")
+	public void testSaveAddonExpectsOk() throws Exception {
+		ResultActions result = mockMvc.perform(post("/REST/Addon/")
 								.content("{ \"name\": \"Pizza\" }")
 								.contentType(MediaType.APPLICATION_JSON));
 		result
@@ -92,5 +92,17 @@ public class AddonRestControllerTest {
 		addonRestController.saveAddon(addOn);
 		
 		verify(addonService, times(1)).save(addOn);
+	}
+	
+	@Test
+	public void testDeleteAddonExpectsOk() throws Exception {
+		ResultActions result = mockMvc.perform(delete("/REST/Addon/{id}", 1L));
+	}
+	
+	@Test
+	public void testDeleteAddonExpectsAddonServiceDeleteCalled() throws Exception {
+		addonRestController.deleteAddon(1L);
+		
+		verify(addonService, times(1)).deleteAddon(1L);
 	}
 }

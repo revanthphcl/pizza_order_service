@@ -69,8 +69,7 @@ public class ProductRestControllerTest{
 	
 	@Test
 	public void testGetProductExpectsJSON() throws Exception {
-		ResultActions result = mockMvc.perform(get("/REST/Product/1")
-				.queryParam("id", "1")
+		ResultActions result = mockMvc.perform(get("/REST/Product/{id}", 1L)
 				.contentType(MediaType.APPLICATION_JSON));
 		result 
 				.andExpect(status().isOk())
@@ -97,7 +96,7 @@ public class ProductRestControllerTest{
 	
 	@Test
 	public void testDeleteProductExpectsOk() throws Exception {
-		ResultActions result = mockMvc.perform(delete("/REST/Product/1"));
+		ResultActions result = mockMvc.perform(delete("/REST/Product/{id}", 1L));
 		
 		result
 			.andExpect(status().isOk());
